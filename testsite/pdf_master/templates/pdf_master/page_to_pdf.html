@@ -1,0 +1,11 @@
+{% extends 'pdf_master/base_pdf_master.html' %}
+
+{% block content %}
+
+	<form class = "urlform" method="post">
+		{% csrf_token %}
+		<!--<input class="urlform__input" type="url" name="url" placeholder="Введите url желаемой web страницы..."> -->
+		{{ form }}
+		<button class="urlform__button" type="submit">Получить PDF</button>
+	</form>
+{% endblock %}

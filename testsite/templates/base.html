@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+	<meta charset="utf-8">
+	<title>
+	{% block title %}
+		PDF-Master
+	{% endblock %}
+    </title>
+</head>
+<body>
+	<header id = "header">
+		<div class = "header__logo">pdf-master</div>
+		<div class = "header__wrapper">
+			<nav>
+				<ul class="main-menu">
+					<li class = "menu-item">
+						<a href="{% url 'save_pdf' %}">PDF-Хранилище</a>
+					</li>
+					<li class = "menu-item">
+						<a href="{% url 'page_to_pdf' %}">Веб-страница в PDF</a>
+					</li>
+				</ul>
+			</nav>
+	</header>
+	<div class = "container">
+		{% block content %}
+			<div class = "content__error">Что то пошло не так...</div>
+		{% endblock %}
+	</div>
+  
+  <script src="{% static 'js/jquery-3.3.1.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

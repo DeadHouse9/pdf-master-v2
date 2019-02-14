@@ -1,0 +1,46 @@
+{% extends 'pdf_master/base_pdf_master.html' %}
+
+{% block content %}
+	<div class = manager>
+		<div class = "manager__wrap">
+
+				<a class = "open-modal-btn">
+					<div class = "manager__item">
+						<i class="manager__icon fas fa-plus"></i>
+						<div class = "manager__signature">Добавить файл</div>
+					</div>
+				</a>
+			
+			{% for book in books %}
+				<a href= {{ book.pdf.url }} target="_blank"> 	
+					<div class = "manager__item">
+						<i class="manager__icon far fa-file"></i>
+						<div class = "manager__signature">{{book.author}} {{ book.title }}</div>
+					</div>
+				</a>
+			{% endfor %}
+
+			<!--
+			<div class = "manager__item">
+				<i class="manager__icon far fa-file"></i>
+				<div class = "manager__signature">Название файла</div>
+			</div>	-->
+		</div>		
+	</div>
+
+
+	<div id="wrapper">
+  		<div class="cover"></div>
+        <div class="modal">
+    		<div class="content">
+      			<h3 class = "modal__title">Загрузка pdf файла</h3>
+      			<form method="post" enctype="multipart/form-data">
+      				{% csrf_token %}
+      				{{ form.as_p }}
+      				<span>only .pdf 50mb max</span>
+      				<button type="submit">Загрузить файл</button>
+      			</form>
+    		</div>
+ 	 	</div>
+	</div>
+{% endblock %}
